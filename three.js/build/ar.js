@@ -5926,8 +5926,6 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
                     backVideoInputId = devices[i].deviceId;
                 }
             }
-
-            alert(devices[i].kind + devices[i].label)
         }
 
         if (!backVideoInputId && videoinputIds.length) {
