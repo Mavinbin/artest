@@ -5935,9 +5935,9 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         var userMediaConstraints = {
 			audio: false,
 			video: {
-                facingMode: {
-                    exact: 'environment'
-                },
+                // facingMode: {
+                //     exact: 'environment'
+                // },
                 deviceId: backVideoInputId ? {exact: backVideoInputId} : undefined,
 				width: {
 					ideal: _this.parameters.sourceWidth,
@@ -5950,7 +5950,8 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
 					// max: 1080
 				}
 		  	}
-                }
+        }
+        alert(userMediaConstraints.deviceId)
 		// get a device which satisfy the constraints
 		navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
 			// set the .src of the domElement
