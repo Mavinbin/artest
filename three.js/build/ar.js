@@ -5919,27 +5919,26 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
 	navigator.mediaDevices.enumerateDevices().then(function(devices) {
         var backVideoInputId = false
         var videoinputIds = []
-        var userMediaConstraints
         for (var i = devices.length - 1; i >= 0; i--) {
             if (devices[i].kind === 'videoinput') {
                 videoinputIds.push(devices[i].deviceId)
-
-                // if (devices[i].label.indexOf("back") !== -1) {
-                //     backVideoInputId = devices[i].deviceId
-                // }
+                if (devices[i].label.indexOf("back") !== -1) {
+                    backVideoInputId = devices[i].deviceId;
+                }
             }
         }
 
-        userMediaConstraints = {
+        if (!backVideoInputId && videoinputIds.length) {
+            backVideoInputId = videoinputIds[videoinputIds.length - 1]
+        }
+
+        var userMediaConstraints = {
 			audio: false,
 			video: {
-                // facingMode: {
-                //     exact: 'environment'
-                // },
-                optional:[{
-                    sourceId: videoinputIds[videoinputIds.length - 1]
-                }],
-                // deviceId: backVideoInputId,
+                facingMode: {
+                    exact: 'environment'
+                },
+                deviceId: backVideoInputId ? {exact: backVideoInputId} : undefined,
 				width: {
 					ideal: _this.parameters.sourceWidth,
 					// min: 1024,
