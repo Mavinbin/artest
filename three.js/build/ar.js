@@ -5951,7 +5951,6 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
 				}
 		  	}
         }
-        alert(userMediaConstraints.deviceId)
 		// get a device which satisfy the constraints
 		navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
 			// set the .src of the domElement
