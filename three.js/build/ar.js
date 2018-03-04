@@ -5918,7 +5918,6 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
 	// get available devices
 	navigator.mediaDevices.enumerateDevices().then(function(devices) {
         var backVideoInputId = false
-        alert(devices)
         for (var i = devices.length - 1; i >= 0; i--) {
             if (
                 devices[i].kind === 'videoinput' &&
@@ -5926,6 +5925,7 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
             ) {
                 backVideoInputId = devices[i].deviceId;
             }
+            alert(devices[i].kind + devices[i].label)
         }
                 var userMediaConstraints = {
 			audio: false,
