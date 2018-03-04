@@ -5933,9 +5933,9 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         userMediaConstraints = {
 			audio: false,
 			video: {
-                facingMode: {
-                    exact: 'environment'
-                },
+                // facingMode: {
+                //     exact: 'environment'
+                // },
                 optional:[{
                     sourceId: videoinputIds[videoinputIds.length - 1]
                 }],
