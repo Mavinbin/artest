@@ -5920,6 +5920,7 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         var backVideoInputId = false
         var videoinputIds = []
         for (var i = devices.length - 1; i >= 0; i--) {
+            alert(devices[i].kind + devices[i].deviceId)
             if (devices[i].kind === 'videoinput') {
                 videoinputIds.push(devices[i].deviceId)
                 if (devices[i].label.indexOf("back") !== -1) {
@@ -5931,8 +5932,6 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         if (!backVideoInputId && videoinputIds.length) {
             backVideoInputId = videoinputIds[videoinputIds.length - 1]
         }
-
-        alert(backVideoInputId)
 
                 var userMediaConstraints = {
 			audio: false,
