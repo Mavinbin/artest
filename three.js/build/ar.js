@@ -5929,7 +5929,7 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         }
 
         if (!backVideoInputId && videoinputIds.length) {
-            backVideoInputId = videoinputIds[videoinputIds.length - 1]
+            backVideoInputId = videoinputIds[0]
         }
 
         var userMediaConstraints = {
