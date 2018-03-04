@@ -5917,17 +5917,18 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
 
 	// get available devices
 	navigator.mediaDevices.enumerateDevices().then(function(devices) {
-        // var backVideoInputId = false
-        // var videoinputIds = []
+        var backVideoInputId = false
+        var videoinputIds = []
         var userMediaConstraints
-        // for (var i = devices.length - 1; i >= 0; i--) {
-        //     if (devices[i].kind === 'videoinput') {
-        //         videoinputIds.push(devices[i].deviceId)
-        //         backVideoInputId = devices[i].deviceId
-        //     }
-        // }
+        for (var i = devices.length - 1; i >= 0; i--) {
+            if (devices[i].kind === 'videoinput') {
+                videoinputIds.push(devices[i].deviceId)
 
-        alert(backVideoInputId)
+                // if (devices[i].label.indexOf("back") !== -1) {
+                //     backVideoInputId = devices[i].deviceId
+                // }
+            }
+        }
 
         userMediaConstraints = {
 			audio: false,
@@ -5935,6 +5936,9 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
                 facingMode: {
                     exact: 'environment'
                 },
+                optional:[{
+                    sourceId: videoinputIds[videoinputIds.length - 1]
+                }],
                 // deviceId: backVideoInputId,
 				width: {
 					ideal: _this.parameters.sourceWidth,
