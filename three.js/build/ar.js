@@ -5932,6 +5932,8 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
             backVideoInputId = videoinputIds[videoinputIds.length - 1]
         }
 
+        alert(backVideoInputId)
+
                 var userMediaConstraints = {
 			audio: false,
 			video: {
