@@ -5929,7 +5929,15 @@ ARjs.Source.prototype._initSourceWebcam = function(onReady, onError) {
         }
 
         if (!backVideoInputId && videoinputIds.length) {
-            backVideoInputId = videoinputIds[0]
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+            if (isAndroid) {
+                backVideoInputId = videoinputIds[0];
+            } else {
+                backVideoInputId = videoinputIds[videoinputIds.length - 1];
+            }
         }
 
         var userMediaConstraints = {
